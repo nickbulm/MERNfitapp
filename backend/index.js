@@ -11,6 +11,8 @@ const userRouter = require("./routes/user-router");
 const programRouter = require("./routes/program-router");
 const workoutRouter = require("./routes/workout-router");
 const sessionRouter = require("./routes/session-router");
+const exerciseRouter = require("./routes/exercise-router")
+const definitionRouter = require("./routes/definition-router")
 dotenv.config()
 app.use(express.static('client'))
 app.use(cors_app());
@@ -33,6 +35,8 @@ app.use("/api", [
     workoutRouter,
     sessionRouter,
     userRouter,
+    exerciseRouter,
+    definitionRouter
   ]);
 
 app.listen(PORT, function() {

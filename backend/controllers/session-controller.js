@@ -25,8 +25,7 @@ const getSessions = async (req, res) => {
   };
 
   module.exports = {
-    //createProgram,
+    //createSession,
     getSessions,
-    //getProgramByID,
     deleteSession
   };

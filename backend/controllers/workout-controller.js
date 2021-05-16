@@ -8,6 +8,21 @@ const getWorkouts = async (req, res) => {
       return res.status(400).json({ success: false, error });
     }
   };
+  const getWorkoutByID = async (req, res) => {
+    try {
+      const workout = await Workout.findById(req.params.id);
+  
+      if (!workout) {
+        return res
+          .status(404)
+          .json({ success: false, error: `workout not found` });
+      }
+      
+      return res.status(200).json({ success: true, data: workout });
+    } catch (error) {
+      return res.status(400).json({ success: false, error });
+    }
+  };
   const deleteWorkout = async (req, res) => {
     try {
       const workout = await Workout.findOneAndDelete({ _id: req.params.id });
@@ -25,9 +40,9 @@ const getWorkouts = async (req, res) => {
   };
 
   module.exports = {
-    //createProgram,
+    //createWorkout,
+    getWorkoutByID,
     getWorkouts,
     deleteWorkout,
-    //getProgramByID,
     
   };

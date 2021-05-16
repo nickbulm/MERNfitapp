@@ -1,0 +1,24 @@
+name,classification,inputtype,initials,description
+Weight,INPUT_VARIABLE,LOADING,KG,Loading used or proscribed. Stored in kilograms displayed in lbs for Imperial users
+Peak Force (Newtons),INPUT_VARIABLE,LOADING,PF,Maximum recorded force for the set measured in newtons
+Mean Force (Newtons),INPUT_VARIABLE,LOADING,MF,Mean recorded force for the set measured in newtons
+Peak Power (watts) ,INPUT_VARIABLE,LOADING,PP,Peak recorded power for the set measured in watts
+Mean Power (watts) ,INPUT_VARIABLE,LOADING,MP,Mean recored power for the set measured in watts
+Reps ,INPUT_VARIABLE,QUANTITY,RP,Number of repetitions performed or prescribed
+Time (min:sec),INPUT_VARIABLE,QUANTITY,T,Time recorded in seconds displayed in minutes and seconds 
+Cluster Set (e.g. 3/3/3/3),INPUT_VARIABLE,QUANTITY,CS,A set comprised of a cluster of sub-sets with short bouts of rest between each sub-set. 
+Centimetres (cm),INPUT_VARIABLE,QUANTITY,CM,Distance measured in centimetres
+Metres (m),INPUT_VARIABLE,QUANTITY,M,Distance measured in meters
+Percent 1 Rep Max (%),INPUT_VARIABLE,EFFORT,%RM,A percentage of the users one rep maximum for the relative exercise
+Rating of Perceived Exertion  (1-10),INPUT_VARIABLE,EFFORT,RPE,Rating of perceived exertion for the set from 1-10. 10 being maximal possible exertion 1 being minimal possible exertion.
+Reps in Reserve (1-10),INPUT_VARIABLE,EFFORT,RR,Number of performable reps beyond the prescribed of performed reps for relative set. 
+Mean velocity (m/s),INPUT_VARIABLE,OTHER,MV,Average velocity recorded or prescribed for the given set. Measured in metres per second 
+Peak velocity  (m/s),INPUT_VARIABLE,OTHER,PV,Maximum velocity recorded or prescribed for the given set. Measured in metres per second 
+Mean speed (km/h),INPUT_VARIABLE,OTHER,MS,Average velocity recorded or prescribed for the given set. Measured in kilometres per hour
+Peak Speed (km/h),INPUT_VARIABLE,OTHER,MS,Maximum velocity recorded or prescribed for the given set. Measured in kilometres per hour
+Average pace (min/km),INPUT_VARIABLE,OTHER,AP,Average pace recorded or prescribed for the given set. Measured in minutes per kilometre
+Peak pace  (min/km),INPUT_VARIABLE,OTHER,TP,Maximum pace recorded or prescribed for the given set. Measured in minutes per kilometre
+Reactive Strength Index ,INPUT_VARIABLE,OTHER,RSI,Reactive Strength Index is a calculation of jump height divided by ground contact time.
+Ground Contact Time (sec.ms),INPUT_VARIABLE,OTHER,GCT,Ground contact time is the time the foot is in contact with the grounds during a step or depth jump. Typically measured in milliseconds. 
+Revolution Per Minute ,INPUT_VARIABLE,OTHER,RPM,Number of revolutions per minutes of a bike tyre or peddle. Can also be used for steps or strokes minute. 
+Rest (for clusters) (sec),INPUT_VARIABLE,OTHER,CR,Rest prescribed for between cluster sets in seconds.

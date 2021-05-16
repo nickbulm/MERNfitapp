@@ -15,7 +15,7 @@ let ExerciseCard = new Schema(
       },
       card_no:{
         type: String,
-        default: A,
+        default: "A",
         required: [true, "Card number required."]
         },
       variation1:{
@@ -70,5 +70,22 @@ let ExerciseCard = new Schema(
       }
     }
 )
+
+ExerciseCard.statics.updateOrCreate = async function(card) {
+  if (!card._id){
+    try {
+      let newcard = await this.create(card)
+      return newcard.save()
+    }catch(error){
+      console.log(error)
+    }
+  }
+  try {
+    let updated = await this.findByIdAndUpdate({id: card._id}, card, {new:true, useFindAndModify: false})
+    return updated
+  } catch(error){
+    console.log(error)
+  }
+}
 
 module.exports = mongoose.model('ExerciseCard', ExerciseCard);

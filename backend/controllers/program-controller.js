@@ -1,6 +1,7 @@
 const Program = require("../db/models/program-model");
 const Workout = require("../db/models/workout-model");
 const Session = require("../db/models/session-model");
+const ExercisCard = require("../db/models/exercisecard-model");
 const createProgram = async (req, res) => {
     const body = req.body;
 
@@ -20,7 +21,7 @@ const createProgram = async (req, res) => {
           })
           workout.save()
           .then( workout => {
-            program.workouts.push(workout._id)
+            program.workouts.push(workout)
             program.save()
             const session = new Session({
               workout: workout._id,
@@ -30,7 +31,7 @@ const createProgram = async (req, res) => {
             })
             session.save()
             .then(session => {
-              workout.sessions.push(session._id)
+              workout.sessions.push(session)
               workout.save()
             })
           })
@@ -65,14 +66,25 @@ const deleteProgram = async (req, res) => {
   };
 const getProgramByID = async (req, res) => {
     try {
-      const program = await Program.findOne({ key: req.params.key });
+      const program = await Program.findById(req.params.id).populate({
+        path: "workouts",
+        model: "Workout",
+        populate: {
+          path: "sessions",
+          model: "Session",
+          populate: {
+            path: "exerciseCards",
+            model: "ExerciseCard"
+          }
+        }
+      });
   
       if (!program) {
         return res
           .status(404)
           .json({ success: false, error: `Program not found` });
       }
-  
+      
       return res.status(200).json({ success: true, data: program });
     } catch (error) {
       return res.status(400).json({ success: false, error });
@@ -86,10 +98,30 @@ const getPrograms = async (req, res) => {
       return res.status(400).json({ success: false, error });
     }
   };
+const updateProgram = async (req, res) => {
+  const program = req.body
+  try{
+      const updated = await Program.updateProgram({_id: req.params.id}, program)
+        if (!updated){
+          return res.status(400).json({ 
+            success: false, 
+            error: "program not updated" });
+        }
+        return res.status(200).json({
+          success: true,
+          data: updated,
+          message: "Program Updated",
+      })
+  } catch (error) {
+    console.log(error)
+    return res.status(400).json({ success: false, error });
+  }
+}
 
 module.exports = {
     createProgram,
     getPrograms,
     getProgramByID,
-    deleteProgram
+    deleteProgram,
+    updateProgram
   };
